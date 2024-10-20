@@ -8,58 +8,78 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Undiknas Denpasar',
-      home: LoginPage(),
+      debugShowCheckedModeBanner: false,
+      home: LoginScreen(),
     );
   }
 }
 
-class LoginPage extends StatelessWidget {
+class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Undiknas Denpasar'),
-      ),
+      backgroundColor: Colors.grey[200],
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.0),
-              child: TextField(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Logo
+              Image.asset('https://undiknas.ac.id/wp-content/uploads/2023/04/UNDIKNAS-COLOR-1024x1024.jpg', height: 150), // Ganti dengan logo sesuai path
+              SizedBox(height: 20),
+              
+              // Email TextField
+              TextField(
                 decoration: InputDecoration(
-                  hintText: 'Email',
-                  prefixIcon: Icon(Icons.email),
+                  prefixIcon: Icon(Icons.email, color: Colors.orange),
+                  labelText: 'Email',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
               ),
-            ),
-            SizedBox(height: 16.0),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.0),
-              child: TextField(
+              SizedBox(height: 20),
+
+              // Password TextField
+              TextField(
                 obscureText: true,
                 decoration: InputDecoration(
-                  hintText: 'Password',
-                  prefixIcon: Icon(Icons.lock),
+                  prefixIcon: Icon(Icons.vpn_key, color: Colors.orange),
+                  labelText: 'Password',
+                  suffixIcon: Icon(Icons.visibility_off),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
               ),
-            ),
-            SizedBox(height: 24.0),
-            ElevatedButton(
-              onPressed: () {
-                // Implement login functionality here
-              },
-              child: Text('Login'),
-            ),
-            SizedBox(height: 16.0),
-            TextButton(
-              onPressed: () {
-                // Implement "Mahasiswa Baru ? Klik disini" functionality here
-              },
-              child: Text('Mahasiswa Baru ? Klik disini'),
-            ),
-          ],
+              SizedBox(height: 20),
+
+              // Login Button
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue[900], // Ganti warna sesuai gambar
+                  minimumSize: Size(double.infinity, 50), // Full width button
+                ),
+                child: Text('Login'),
+              ),
+              
+              SizedBox(height: 20),
+              
+              // New Student Link
+              TextButton(
+                onPressed: () {},
+                child: Text(
+                  'Mahasiswa Baru? Klik disini',
+                  style: TextStyle(
+                    color: Colors.black54,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
